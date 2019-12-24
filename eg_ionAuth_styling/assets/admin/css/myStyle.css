@@ -1,0 +1,45 @@
+
+
+
+
+/* 
+
+Dated: 24 Dec 2019
+
+sign_out_Header
+
+Adding some color to the sign out text at the top Nav Bar
+
+*/
+
+.sign_out_Header{
+    color: aliceblue;
+}
+
+.sign_out_Header:hover{
+    color: antiquewhite;
+    z-index: 50px;
+}
+
+/************
+1010px
+************/
+
+@media only screen and (max-width: 1010px)
+{	
+    .sign_out_Header{
+        margin: 1.3vh;
+    }
+}
+
+
+/************
+991px
+************/
+
+@media only screen and (min-width: 991px)
+{	
+    .header-button2{
+        display: none!important;
+    }
+}
