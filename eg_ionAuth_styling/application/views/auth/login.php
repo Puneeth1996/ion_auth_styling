@@ -56,7 +56,7 @@
 
 				<div class="container-login100-form-btn">
 					<button class="login100-form-btn">
-                        <?php echo form_submit('submit', lang('login_submit_btn'));?>
+                        Login<?php echo form_submit('submit');?>
 					</button>
 				</div>
 				</div>

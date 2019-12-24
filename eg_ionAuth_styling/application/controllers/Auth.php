@@ -32,31 +32,31 @@ class Auth extends CI_Controller
 			// redirect them to the login page
 			redirect('auth/login', 'refresh');
 		}
-		else if (!$this->ion_auth->is_admin()) // remove this elseif if you want to enable this for non-admins
-		{
-			// redirect them to the home page because they must be an administrator to view this
-			show_error('You must be an administrator to view this page.');
-		}
-		else
-		{
-			$this->data['title'] = $this->lang->line('index_heading');
+		// else if (!$this->ion_auth->is_admin()) // remove this elseif if you want to enable this for non-admins
+		// {
+		// 	// redirect them to the home page because they must be an administrator to view this
+		// 	show_error('You must be an administrator to view this page.');
+		// }
+		// else
+		// {
+		// 	$this->data['title'] = $this->lang->line('index_heading');
 			
-			// set the flash data error message if there is one
-			$this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
+		// 	// set the flash data error message if there is one
+		// 	$this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
 
-			//list the users
-			$this->data['users'] = $this->ion_auth->users()->result();
+		// 	//list the users
+		// 	$this->data['users'] = $this->ion_auth->users()->result();
 			
-			//USAGE NOTE - you can do more complicated queries like this
-			//$this->data['users'] = $this->ion_auth->where('field', 'value')->users()->result();
+		// 	//USAGE NOTE - you can do more complicated queries like this
+		// 	//$this->data['users'] = $this->ion_auth->where('field', 'value')->users()->result();
 			
-			foreach ($this->data['users'] as $k => $user)
-			{
-				$this->data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
-			}
+		// 	foreach ($this->data['users'] as $k => $user)
+		// 	{
+		// 		$this->data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
+		// 	}
 
-			$this->_render_page('auth' . DIRECTORY_SEPARATOR . 'index', $this->data);
-		}
+		// 	$this->_render_page('auth' . DIRECTORY_SEPARATOR . 'index', $this->data);
+		// }
 	}
 
 	/**
@@ -81,7 +81,7 @@ class Auth extends CI_Controller
 				//if the login is successful
 				//redirect them back to the home page
 				$this->session->set_flashdata('message', $this->ion_auth->messages());
-				redirect('/', 'refresh');
+				redirect('/Home', 'refresh');
 			}
 			else
 			{
