@@ -10,7 +10,7 @@
 
 <div class="container">
   <h2><?php echo lang('login_heading');?></h2>
-  <form action="http://localhost/ion_auth_styling/eg_ionAuth_styling/index.php/auth/login" method="post">
+  <form action="auth/login" method="post">
     <div class="form-group">
       <label for="email"><?php echo lang('login_identity_label', 'identity');?></label>
       <input type="email" class="form-control" id="email" placeholder="Enter email" name="identity">
@@ -22,7 +22,6 @@
     <div class="checkbox">
         <?php echo form_checkbox('remember', '1', FALSE, 'id="remember"');?>Remember Me
     </div>
-    <br/>
     <?php echo form_submit('submit', lang('login_submit_btn'));?>
   </form>
   <p><a href="forgot_password"><?php echo lang('login_forgot_password');?></a></p>
