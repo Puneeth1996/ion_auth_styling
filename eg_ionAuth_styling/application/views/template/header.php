@@ -61,7 +61,7 @@
         <!-- PAGE CONTAINER-->
         <div class="page-container2">
             <!-- HEADER DESKTOP-->
-            <header class="header-desktop2">
+            <header class="header-desktop2" style="background: #004ef33b;">
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
                         <div class="header-wrap2">
