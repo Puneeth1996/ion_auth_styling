@@ -29,7 +29,7 @@
 <body>
 	
     
-	<div class="container-login100" style="background-image: url('<?php echo base_url(); ?>Login_v9/images/bg-01.jpg');">
+	<div class="container-login100" style="background-image: url('images/bg-01.jpg');">
 		<div class="wrap-login100 p-l-55 p-r-55 p-t-80 p-b-30">
 			<form class="login100-form validate-form" action="<?php echo base_url(); ?>index.php/auth/login" method="post">
 				<span class="login100-form-title p-b-37">
@@ -51,8 +51,6 @@
                     <?php echo form_checkbox('remember', '1', FALSE, 'id="remember"');?>Remember Me
                 </div>
                 <br/>
-                <p><a href="forgot_password"><?php echo lang('login_forgot_password');?></a></p>
-                <br/>
 
 				<div class="container-login100-form-btn">
 					<button class="login100-form-btn">
@@ -66,7 +64,7 @@
 				</div>
             </form>
             
-            
+            <p><a href="forgot_password"><?php echo lang('login_forgot_password');?></a></p>
 
 			
 		</div>
