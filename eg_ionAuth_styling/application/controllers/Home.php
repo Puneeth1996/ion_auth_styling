@@ -40,7 +40,6 @@ class Home extends CI_Controller {
 	public function demo()
 	{	
 		$crud = new grocery_CRUD();
-		$crud->set_theme('datatables');
 		$crud->set_table('offices');
 
 		$output = $crud->render();
