@@ -42,15 +42,15 @@
         <!-- MENU SIDEBAR-->
         <aside class="menu-sidebar2">
             <div class="logo">
-                <a href="#">
+                <a href="<?php echo base_url(); ?>index.php/Home">
                     <img src="<?php echo base_url(); ?>assets/admin/images/icon/logo-white.png" alt="Cool Admin" />
                 </a>
             </div>
             <div class="menu-sidebar2__content js-scrollbar1">
                 <nav class="navbar-sidebar2">
                     <ul class="list-unstyled navbar__list">
-                        <li><a href='./Home/demo'> Demo Grid </a></li>
-                        <li><a href='./Home/blog_admin'> employees Grid </a></li>
+                        <li><a href='<?php echo base_url(); ?>index.php/Home/demo'> Demo Grid </a></li>
+                        <li><a href='<?php echo base_url(); ?>index.php/Home/blog_admin'> employees Grid </a></li>
                         <li><a class="sign_out_Header" href="<?php echo base_url(); ?>index.php/auth/logout">Sign out</a></li>
                     </ul>
                 </nav>
@@ -88,8 +88,8 @@
                 <div class="menu-sidebar2__content js-scrollbar2">
                     <nav class="navbar-sidebar2">
                     <ul class="list-unstyled navbar__list">
-                        <li><a href='./Home/demo'> Demo Grid </a></li>
-                        <li><a href='./Home/blog_admin'> employees Grid </a></li>
+                        <li><a href='<?php echo base_url(); ?>index.php/Home/demo'> Demo Grid </a></li>
+                        <li><a href='<?php echo base_url(); ?>index.php/Home/blog_admin'> employees Grid </a></li>
                         <li><a class="sign_out_Header" href="<?php echo base_url(); ?>index.php/auth/logout">Sign out</a></li>
                     </ul>
                     </nav>
