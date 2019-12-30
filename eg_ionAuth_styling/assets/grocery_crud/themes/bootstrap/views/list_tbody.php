@@ -50,7 +50,6 @@
                             <div class="btn-group">
                                 <button type="button" class="btn btn-default dropdown-toggle gc-bootstrap-dropdown">
                                     <?php echo $more_string; ?>
-                                    <span class="caret"></span>
                                 </button>
 
                                 <ul class="dropdown-menu">
@@ -112,7 +111,6 @@
                     <div class="btn-group">
                         <button type="button" class="btn btn-default gc-bootstrap-dropdown dropdown-toggle">
                             <?php echo $this->l('list_actions'); ?>
-                            <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu">
                             <?php if (!$unset_edit) { ?>
