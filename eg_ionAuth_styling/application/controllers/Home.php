@@ -52,7 +52,7 @@ class Home extends CI_Controller {
 	}
 
 
-	public function blog_admin()
+	public function employees()
 	{	
 		$crud = new grocery_CRUD();
 		$crud->set_table('employees');
