@@ -146,9 +146,12 @@
         						<tr class="filter-row gc-search-row">
         							<td class="no-border-right <?php if ($buttons_counter === 0) {?>hidden<?php }?>">
                                         <?php if (!$unset_delete) { ?>
-            							     <div class="floatL t5">
-            							         <input type="checkbox" class="select-all-none" />
-            							     </div>
+                                            <div class="floatL t5">
+                                                <label class="au-checkbox">
+                                                    <input type="checkbox"  class="select-all-none">
+                                                    <span class="au-checkmark"></span>
+                                                </label>
+                                            </div>
                                          <?php } ?>
         							 </td>
         							<td class="no-border-left <?php if ($buttons_counter === 0) {?>hidden<?php }?>">

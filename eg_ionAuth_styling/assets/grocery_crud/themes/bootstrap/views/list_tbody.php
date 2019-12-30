@@ -32,7 +32,10 @@
         <td <?php if ($unset_delete) { ?> style="border-right: none;"<?php } ?>
             <?php if ($buttons_counter === 0) {?>class="hidden"<?php }?>>
             <?php if (!$unset_delete) { ?>
-                <input type="checkbox" class="select-row" data-id="<?php echo $row->primary_key_value; ?>" />
+                <label class="au-checkbox">
+                    <input type="checkbox" class="select-row" data-id="<?php echo $row->primary_key_value; ?>"  />
+                    <span class="au-checkmark"></span>
+                </label>
             <?php } ?>
         </td>
         <td <?php if ($unset_delete) { ?> style="border-left: none;"<?php } ?>
