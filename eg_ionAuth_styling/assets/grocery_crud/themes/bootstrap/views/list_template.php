@@ -97,7 +97,7 @@
                     </div>                      
                     <div class="clear"></div>
                 </div>
-                <div class="table-container">
+                <div class="table-responsive table-responsive-data2">
                     <?php echo form_open("", 'method="post" autocomplete="off" id="gcrud-search-form"'); ?>
                         <div class="header-tools">
                             <?php if(!$unset_add){?>
@@ -132,7 +132,7 @@
                             </div>
                             <div class="clear"></div>
                         </div>
-        			    <table class="table table-bordered grocery-crud-table table-hover">
+        			    <table class="table table-bordered grocery-crud-table table-hover table table-data2">
         					<thead>
         						<tr>
         							<th colspan="2" <?php if ($buttons_counter === 0) {?>class="hidden"<?php }?>>
