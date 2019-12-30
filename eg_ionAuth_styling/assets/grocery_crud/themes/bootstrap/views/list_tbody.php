@@ -150,7 +150,7 @@
                 </div>
         </td>
         <?php foreach($columns as $column){?>
-            <td>
+            <td class="desc">
                 <?php echo $row->{$column->field_name} != '' ? $row->{$column->field_name} : '&nbsp;' ; ?>
             </td>
         <?php }?>
