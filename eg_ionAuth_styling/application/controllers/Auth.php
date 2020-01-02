@@ -22,10 +22,10 @@ class Auth extends CI_Controller
 	}
 
 
-	public function _example_output($output = null)
-	{
-		$this->load->view('example.php',(array)$output);
-	}
+	// public function _example_output($output = null)
+	// {
+	// 	$this->load->view('example.php',(array)$output);
+	// }
 
 	/**
 	 * Redirect if needed, otherwise display the user list
@@ -45,12 +45,12 @@ class Auth extends CI_Controller
 		}
 		else
 		{
-			$crud = new grocery_CRUD();
-			$crud->set_table('users');
-			$crud->set_subject('Users');
-			// $crud->columns('city','country','phone','addressLine1','postalCode');
-			$output = $crud->render();
-			$this->_example_output($output);
+			// $crud = new grocery_CRUD();
+			// $crud->set_table('users');
+			// $crud->set_subject('Users');
+			// // $crud->columns('city','country','phone','addressLine1','postalCode');
+			// $output = $crud->render();
+			// $this->_example_output($output);
 
 
 			$this->data['title'] = $this->lang->line('index_heading');
