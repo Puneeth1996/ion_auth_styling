@@ -3,6 +3,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Home extends CI_Controller {
 
+
+
+	public $data = [];
+
+
 	public function __construct()
 	{
 		parent::__construct();
@@ -30,10 +35,32 @@ class Home extends CI_Controller {
 
 	public function index()
 	{	
-		$this->load->view('template/header');
-		$this->load->view('index');
-		$this->load->view('template/footer');
+
+
+		if (!$this->ion_auth->is_admin())
+		{	
+			$this->load->view('template/header');
+			$this->load->view('index');
+			$this->load->view('template/footer');
+			
+		}
+		
+		
+		// this below code block is for the admin Page Only where certain features like
+		// adding new users can be done 
+
+		else { 
+			$this->load->view('template/headerAdmin');
+			$this->load->view('index');
+			$this->load->view('template/footer');
+		}
 	}
+
+
+
+	
+
+
 
 
 
