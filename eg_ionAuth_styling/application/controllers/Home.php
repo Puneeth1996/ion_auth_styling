@@ -34,23 +34,25 @@ class Home extends CI_Controller {
 
 
 	public function index()
-	{	
+	{
 
 
 		if (!$this->ion_auth->is_admin())
-		{	
+		{
 			$this->load->view('template/header');
+			$this->load->view('intro.php');
 			$this->load->view('index');
 			$this->load->view('template/footer');
-			
-		}
-		
-		
-		// this below code block is for the admin Page Only where certain features like
-		// adding new users can be done 
 
-		else { 
+		}
+
+
+		// this below code block is for the admin Page Only where certain features like
+		// adding new users can be done
+
+		else {
 			$this->load->view('template/headerAdmin');
+			$this->load->view('intro.php');
 			$this->load->view('index');
 			$this->load->view('template/footer');
 		}
@@ -58,14 +60,14 @@ class Home extends CI_Controller {
 
 
 
-	
+
 
 
 
 
 
 	public function demo()
-	{	
+	{
 		$crud = new grocery_CRUD();
 		$crud->set_table('offices');
 
@@ -80,7 +82,7 @@ class Home extends CI_Controller {
 
 
 	public function employees()
-	{	
+	{
 		$crud = new grocery_CRUD();
 		$crud->set_table('employees');
 

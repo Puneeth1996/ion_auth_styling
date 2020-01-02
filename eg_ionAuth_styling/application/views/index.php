@@ -1,4 +1,8 @@
 
+
+
+
+
             <!-- STATISTIC-->
             <section class="statistic">
                 <div class="section__content section__content--p30">
