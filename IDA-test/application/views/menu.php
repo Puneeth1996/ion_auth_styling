@@ -6,39 +6,72 @@
       <ul class="sidenav sidenav-collapsible leftside-navigation collapsible sidenav-fixed menu-shadow leftmenu" id="slide-out" data-menu="menu-navigation" data-collapsible="menu-accordion">
         <?php
         #print_r($menu);
-
-        $user_dept = $this->ion_auth->user()->row()->dept_values;
-        $user_dept_arr = explode(",",$user_dept);
-
           $keys = array_keys($menu);
           foreach($keys as $row){
         ?>
-            <!-- Lets pull the current row from users table and his description on which dept  -->
-            <?php if(in_array($menu[$row]->title, $user_dept_arr)){ ?>
-            <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="JavaScript:void(0)" ><i class="material-icons"><?php echo $menu[$row]->icon ?></i><span class="menu-title" data-i18n=""><?php echo $menu[$row]->title?></span></a>
-              <div class="collapsible-body">
-                <ul class="collapsible collapsible-sub" data-collapsible="accordion">
-                  <?php foreach($menu[$row]->sub as $r){
-                    if(!$r->is_group){
-                    ?>
-                  <li class=""><a href="JavaScript:void(0)" onclick="return changeSrc('<?php echo $r->title ?>','','<?php echo $r->link?>')"><?php echo $r->title?></a></li>
-                <?php  }
-                  else{
-                ?>
-                <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="JavaScript:void(0)" ><i class="material-icons"><?php echo $r->icon ?></i><span class="menu-title" data-i18n=""><?php echo $r->title?></span></a>
-                  <div class="collapsible-body">
-                    <ul class="collapsible collapsible-sub" data-collapsible="accordion">
-                      <?php if(isset($menu[$row]->sub[$r->id]->sub)){foreach($menu[$row]->sub[$r->id]->sub as $r1){ ?>
-                        <li class=""><a  href="JavaScript:void(0)" onclick="return changeSrc('<?php echo $r1->title ?>','','<?php echo $r1->link?>')"><?php echo $r1->title?></a></li>
-                      <?php }} ?>
-                    </ul>
-                  </div>
-                </li>
-              <?php } } ?>
-                </ul>
-              </div>
-            </li>
-            <?php } ?>
+        
+            
+
+
+
+<?php if(strpos($menu[$row]->permissions, $this->ion_auth->user()->row()->first_name) !== false) {  ?> 
+  <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="JavaScript:void(0)" ><i class="material-icons"><?php echo $menu[$row]->icon ?></i><span class="menu-title" data-i18n=""><?php echo $menu[$row]->title ?></span></a>
+    <div class="collapsible-body">
+      <ul class="collapsible collapsible-sub" data-collapsible="accordion">
+        <?php foreach($menu[$row]->sub as $r){
+          if(!$r->is_group){
+          ?>
+
+
+        <?php if(strpos($r->permissions, $this->ion_auth->user()->row()->first_name) !== false) {  ?>     
+        <li class=""><a href="JavaScript:void(0)" onclick="return changeSrc('<?php echo $r->title ?>','','<?php echo $r->link?>')"><?php echo $r->title?></a></li>
+        <?php } ?>
+
+
+      <?php  }
+        else{
+      ?>
+
+
+
+      <?php if(strpos($r->permissions, $this->ion_auth->user()->row()->first_name) !== false) {  ?>
+      <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="JavaScript:void(0)" ><i class="material-icons"><?php echo $r->icon ?></i><span class="menu-title" data-i18n=""><?php echo $r->title?></span></a>
+      <?php } ?>
+        <div class="collapsible-body">
+          <ul class="collapsible collapsible-sub" data-collapsible="accordion">
+            <?php if(isset($menu[$row]->sub[$r->id]->sub)){foreach($menu[$row]->sub[$r->id]->sub as $r1){ ?>
+
+
+
+
+
+
+              <?php if(strpos($r1->permissions, $this->ion_auth->user()->row()->first_name) !== false) {  ?>
+              <li class=""><a  href="JavaScript:void(0)" onclick="return changeSrc('<?php echo $r1->title ?>','','<?php echo $r1->link?>')"><?php echo $r1->title?></a></li>
+              <?php } ?>
+
+
+
+
+
+
+
+            <?php }} ?>
+          </ul>
+        </div>
+      </li>
+    <?php } } ?>
+      </ul>
+    </div>
+  </li>
+<?php } ?>
+
+
+
+
+
+
+
         <?php }  ?>
       </ul>
       <div class="navigation-background"></div><a class="sidenav-trigger btn-sidenav-toggle btn-floating btn-medium waves-effect waves-light hide-on-large-only" href="#" data-target="slide-out"><i class="material-icons">menu</i></a>

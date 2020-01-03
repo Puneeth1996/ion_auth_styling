@@ -27,13 +27,38 @@ class Admin extends CI_Controller {
     $crud->set_subject('Menu');
 		$crud->set_relation('parent','tbl_menu','title = {id} - {title}');
     #$crud->unset_jquery();
-    $crud->field_type('permissions','multiselect',
-            array('1' => 'Puneeth', '2' => 'Ravindra','3' => 'Raju' , '4' => 'admin', '5' => 'Manju'));
+    // $crud->field_type('permissions','multiselect',
+    //         array('1' => 'Puneeth', '2' => 'Ravindra','3' => 'Raju' , '4' => 'admin', '5' => 'Manju'));
 
 
     // $crud->set_relation('permissionsColEmp','users','id')
 
-    $crud->field_type('permissions','multiselect',array('1' => 'Puneeth', '2' => 'Ravindra','3' => 'Raju' , '4' => 'admin', '5' => 'Manju'));
+
+
+    $this->db->select('first_name');
+    $results = $this->db->get('users')->result();
+    $first_name_multiselect = array();
+    
+    foreach ($results as $result) {
+        $first_name_multiselect[$result->first_name] = $result->first_name;
+    }
+    // $crud->field_type('permissions','multiselect',array('1' => 'Puneeth', '2' => 'Ravindra','3' => 'Raju' , '4' => 'admin', '5' => 'Manju'));
+    $crud->field_type('permissions', 'multiselect', $first_name_multiselect);
+
+
+
+    $this->db->select('name');
+    $results = $this->db->get('groups')->result();
+    $name_multiselect = array();
+    
+    foreach ($results as $result) {
+        $name_multiselect[$result->name] = $result->name;
+    }
+    // $crud->field_type('permissions','multiselect',array('1' => 'Puneeth', '2' => 'Ravindra','3' => 'Raju' , '4' => 'admin', '5' => 'Manju'));
+    $crud->field_type('user_groups', 'multiselect', $name_multiselect);
+
+
+
     $output = $crud->render();
     $this->render_output($output);
 
