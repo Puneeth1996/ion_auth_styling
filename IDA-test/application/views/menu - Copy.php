@@ -6,13 +6,18 @@
       <ul class="sidenav sidenav-collapsible leftside-navigation collapsible sidenav-fixed menu-shadow leftmenu" id="slide-out" data-menu="menu-navigation" data-collapsible="menu-accordion">
         <?php
         #print_r($menu);
-        
+          $Usergroups = $this->ion_auth->groups()->result();
+          $UsergroupsString = implode(', ', $Usergroups);
           $keys = array_keys($menu);
           foreach($keys as $row){
-            $grp = explode(',',$menu[$row]->user_groups);
         ?>
-        
-          <?php if($this->ion_auth->in_group($grp,false,true)){ ?>
+
+
+
+
+
+
+            
             <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="JavaScript:void(0)" ><i class="material-icons"><?php echo $menu[$row]->icon ?></i><span class="menu-title" data-i18n=""><?php echo $menu[$row]->title?></span></a>
               <div class="collapsible-body">
                 <ul class="collapsible collapsible-sub" data-collapsible="accordion">
@@ -36,7 +41,17 @@
                 </ul>
               </div>
             </li>
-          <?php }  ?>
+
+
+
+
+
+
+
+
+
+
+
         <?php }  ?>
       </ul>
       <div class="navigation-background"></div><a class="sidenav-trigger btn-sidenav-toggle btn-floating btn-medium waves-effect waves-light hide-on-large-only" href="#" data-target="slide-out"><i class="material-icons">menu</i></a>
