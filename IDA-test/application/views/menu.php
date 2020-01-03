@@ -9,6 +9,7 @@
           $keys = array_keys($menu);
           foreach($keys as $row){
         ?>
+          <?php if($this->ion_auth->in_group($menu[$row]->title)){?>
             <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="JavaScript:void(0)" ><i class="material-icons"><?php echo $menu[$row]->icon ?></i><span class="menu-title" data-i18n=""><?php echo $menu[$row]->title ?></span></a>
               <div class="collapsible-body">
                 <ul class="collapsible collapsible-sub" data-collapsible="accordion">
@@ -19,19 +20,24 @@
                 <?php  }
                   else{
                 ?>
-                <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="JavaScript:void(0)" ><i class="material-icons"><?php echo $r->icon ?></i><span class="menu-title" data-i18n=""><?php echo $r->title?></span></a>
+                <?php if($this->ion_auth->in_group($r->title)){?>
+                <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="JavaScript:void(0)" ><i class="material-icons"><?php echo $r->icon ?></i><span class="menu-title" data-i18n="">232<?php echo $r->title?></span></a>
                   <div class="collapsible-body">
                     <ul class="collapsible collapsible-sub" data-collapsible="accordion">
                       <?php if(isset($menu[$row]->sub[$r->id]->sub)){foreach($menu[$row]->sub[$r->id]->sub as $r1){ ?>
+                        <?php if($this->ion_auth->in_group($menu[$row]->title)){?>
                         <li class=""><a  href="JavaScript:void(0)" onclick="return changeSrc('<?php echo $r1->title ?>','','<?php echo $r1->link?>')"><?php echo $r1->title?></a></li>
+                        <?php } ?>
                       <?php }} ?>
                     </ul>
                   </div>
                 </li>
+                <?php } ?>
               <?php } } ?>
                 </ul>
               </div>
             </li>
+          <?php }?>
         <?php }  ?>
       </ul>
       <div class="navigation-background"></div><a class="sidenav-trigger btn-sidenav-toggle btn-floating btn-medium waves-effect waves-light hide-on-large-only" href="#" data-target="slide-out"><i class="material-icons">menu</i></a>

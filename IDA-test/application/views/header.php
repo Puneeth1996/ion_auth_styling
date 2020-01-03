@@ -51,7 +51,53 @@
       <div class="navbar navbar-fixed">
         <nav class="navbar-main navbar-color nav-collapsible sideNav-lock navbar-dark no-shadow gradient-45deg-light-blue-cyan">
           <div align="left" class="col sm6 " id="welcome" style="float: left; margin-left: 270px">
-            Welcome <?php echo $this->ion_auth->user()->row()->first_name;?>
+              Welcome <?php echo $this->ion_auth->user()->row()->first_name;?> -  <?php echo $this->ion_auth->user()->row()->last_name;?>
+
+              <!-- <?php if($this->ion_auth->in_group('IDA')){?>
+                  IDA 
+              <?php }?> -->
+              <?php if($this->ion_auth->is_admin()){?>
+                  Admin
+              <?php }?>
+              <?php
+              
+              // $data['users'] = $this->ion_auth->users()->result();
+              // foreach ($this->data['users'] as $k => $user)
+              // {
+              //   $this->data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
+              //   echo $this->data['users'][$k]->groups;
+              // }
+
+
+              // echo ($this->ion_auth->get_users_groups()->row()->id);
+              // echo ($this->ion_auth->get_users_groups(3));
+
+
+              // $this->data['users'] = $this->ion_auth->users()->result();
+
+              
+              // foreach ($this->data['users'] as $k => $user)
+              // {	  
+              //     echo($k);
+              //     $this->data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
+              //     $user_groups = $this->ion_auth->get_users_groups($user->id)->result();
+              //     print($user_groups);
+              // }
+              // $user_in_group = $this->ion_auth->get_users_groups(); 
+
+
+              // foreach($this->ion_auth->groups()->result() as $k => $cur)
+              // {
+              //     echo $cur->user_id;
+              //     echo ',';
+              // }
+                
+              // $group_id = 2;
+              // $group = $this->ion_auth->group($group_id)->result();
+
+
+              // print($group);
+              ?>
           </div>
           <div align="right" class="col sm6 " style="margin-right: 40px; float:right;">
             <a href="<?php echo site_url('user/profile')?>">Profile</a> | <a href="<?php echo site_url('auth/logout')?>">Logout</a>
