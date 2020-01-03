@@ -27,13 +27,13 @@ class Admin extends CI_Controller {
     $crud->set_subject('Menu');
 		$crud->set_relation('parent','tbl_menu','title = {id} - {title}');
     #$crud->unset_jquery();
-    // $crud->field_type('permissions','multiselect',
-    //         array('1' => 'Puneeth', '2' => 'Ravindra','3' => 'Raju' , '4' => 'admin', '5' => 'Manju'));
+    $crud->field_type('permissions','multiselect',
+            array('1' => 'Puneeth', '2' => 'Ravindra','3' => 'Raju' , '4' => 'admin', '5' => 'Manju'));
 
 
     // $crud->set_relation('permissionsColEmp','users','id')
 
-    $crud->set_relation('permissions','users','{username} - {last_name} {first_name}');
+    $crud->field_type('permissions','multiselect',array('1' => 'Puneeth', '2' => 'Ravindra','3' => 'Raju' , '4' => 'admin', '5' => 'Manju'));
     $output = $crud->render();
     $this->render_output($output);
 
@@ -83,5 +83,6 @@ function userMangement(){
 
   $this->_example_output($output);
 }
+
 
 }
