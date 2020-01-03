@@ -4,7 +4,7 @@
 <?php endforeach; ?>
 
 
-<?php  echo "string just to test out the data"; ?>
+<!-- <?php  echo "string just to test out the data"; ?> -->
 <?php echo $output; ?>
 
 

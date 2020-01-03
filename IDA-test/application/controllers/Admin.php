@@ -25,10 +25,63 @@ class Admin extends CI_Controller {
     $crud = new grocery_CRUD();
     $crud->set_table('tbl_menu');
     $crud->set_subject('Menu');
-		$crud->set_relation('parent','tbl_menu','{id} - {title}');
-		#$crud->unset_jquery();
+		$crud->set_relation('parent','tbl_menu','title = {id} - {title}');
+    #$crud->unset_jquery();
+    // $crud->field_type('permissions','multiselect',
+    //         array('1' => 'Puneeth', '2' => 'Ravindra','3' => 'Raju' , '4' => 'admin', '5' => 'Manju'));
+
+
+    // $crud->set_relation('permissionsColEmp','users','id')
+
+    $crud->set_relation('permissions','users','{username} - {last_name} {first_name}');
     $output = $crud->render();
     $this->render_output($output);
+
   }
+
+	public function _example_output($output = null)
+	{
+		$this->load->view('example.php',(array)$output);
+	}
+
+
+  function employees_management()
+{
+    $crud = new grocery_CRUD();
+ 
+    $crud->set_theme('datatables');
+    $crud->set_table('employees');
+    $crud->display_as('officeCode','Office City');
+    $crud->set_subject('Employee');
+ 
+    $crud->set_relation('officeCode','offices','city');
+    
+
+    $this->db->select('employeeNumber');
+    $results = $this->db->get('employees')->result();
+    $employees_multiselect = array();
+
+    foreach ($results as $result) {
+      echo $result;
+        $employees_multiselect[$result->employeeNumber] = $result->employeeNumber;
+    }
+
+    $crud->field_type('firstName', 'multiselect', $employees_multiselect); 
+ 
+    $output = $crud->render();
+ 
+    $this->_example_output($output);
+    
+
+}
+
+function userMangement(){
+  $crud = new grocery_CRUD();
+  $crud->set_table('users');
+
+  $output = $crud->render();
+
+  $this->_example_output($output);
+}
 
 }
