@@ -13,19 +13,13 @@ class Auth extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->database();
-		$this->load->library(['ion_auth', 'form_validation', 'grocery_CRUD']);
+		$this->load->library(['ion_auth', 'form_validation']);
 		$this->load->helper(['url', 'language']);
 
 		$this->form_validation->set_error_delimiters($this->config->item('error_start_delimiter', 'ion_auth'), $this->config->item('error_end_delimiter', 'ion_auth'));
 
 		$this->lang->load('auth');
 	}
-
-
-	// public function _example_output($output = null)
-	// {
-	// 	$this->load->view('example.php',(array)$output);
-	// }
 
 	/**
 	 * Redirect if needed, otherwise display the user list
@@ -45,25 +39,17 @@ class Auth extends CI_Controller
 		}
 		else
 		{
-			// $crud = new grocery_CRUD();
-			// $crud->set_table('users');
-			// $crud->set_subject('Users');
-			// // $crud->columns('city','country','phone','addressLine1','postalCode');
-			// $output = $crud->render();
-			// $this->_example_output($output);
-
-
 			$this->data['title'] = $this->lang->line('index_heading');
-
+			
 			// set the flash data error message if there is one
 			$this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
 
 			//list the users
 			$this->data['users'] = $this->ion_auth->users()->result();
-
+			
 			//USAGE NOTE - you can do more complicated queries like this
 			//$this->data['users'] = $this->ion_auth->where('field', 'value')->users()->result();
-
+			
 			foreach ($this->data['users'] as $k => $user)
 			{
 				$this->data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
@@ -218,7 +204,7 @@ class Auth extends CI_Controller
 	public function forgot_password()
 	{
 		$this->data['title'] = $this->lang->line('forgot_password_heading');
-
+		
 		// setting validation rules by checking whether identity is username or email
 		if ($this->config->item('identity', 'ion_auth') != 'email')
 		{
@@ -303,7 +289,7 @@ class Auth extends CI_Controller
 		}
 
 		$this->data['title'] = $this->lang->line('reset_password_heading');
-
+		
 		$user = $this->ion_auth->forgotten_password_check($code);
 
 		if ($user)
@@ -607,10 +593,10 @@ class Auth extends CI_Controller
 		$user = $this->ion_auth->user($id)->row();
 		$groups = $this->ion_auth->groups()->result_array();
 		$currentGroups = $this->ion_auth->get_users_groups($id)->result();
-
+			
 		//USAGE NOTE - you can do more complicated queries like this
 		//$groups = $this->ion_auth->where(['field' => 'value'])->groups()->result_array();
-
+	
 
 		// validate form input
 		$this->form_validation->set_rules('first_name', $this->lang->line('edit_user_validation_fname_label'), 'trim|required');
@@ -653,7 +639,7 @@ class Auth extends CI_Controller
 				{
 					// Update the groups user belongs to
 					$this->ion_auth->remove_from_group('', $id);
-
+					
 					$groupData = $this->input->post('groups');
 					if (isset($groupData) && !empty($groupData))
 					{
@@ -842,7 +828,7 @@ class Auth extends CI_Controller
 		if ($this->config->item('admin_group', 'ion_auth') === $group->name) {
 			$this->data['group_name']['readonly'] = 'readonly';
 		}
-
+		
 		$this->data['group_description'] = [
 			'name'  => 'group_description',
 			'id'    => 'group_description',
