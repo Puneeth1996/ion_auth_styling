@@ -29,7 +29,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 // $url = $port.$server.$script;
 
 // $config['base_url'] = $url;http://localhost/ion_auth_styling/eg_ionAuth_styling/
-$config['base_url'] = 'http://localhost/ion_auth_styling/eg_ionAuth_styling/';
+$config['base_url'] = 'http://localhost:8080/ion_auth_styling/eg_ionAuth_styling/';
 
 /*
 |--------------------------------------------------------------------------
